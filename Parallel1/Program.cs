@@ -82,8 +82,13 @@ class Program
     }
     static double Determinant(double[,] a)
     {
+        if (a.GetLength(0) != a.GetLength(1)) throw new ArgumentException();
+        if(a.GetLength(0) == 2) return a[0, 0] * a[1, 1] - a[0, 1] * a[1, 0];
         double det = 0;
-
+        for(int i = 0; i < a.GetLength(0); ++i)
+        {
+            det += Math.Pow(-1, i) * a[0, i] * Determinant(SubMatrix(a, 0, i));
+        }
         return det;
     } // ???
     static double[,] InverseMatrix(double[,] a)
@@ -98,8 +103,9 @@ class Program
 
     static void Main(string[] args)
     {
-        double[,] a = { { 1, -2, 5 }, { 3, -1, 0 } };
+        double[,] a = { { 1, -2, 5 }, { 3, -1, 0 }, { 2, 1, 3} };
         double[,] b = { { 5, 6 }, { 1, -4 }, { -2, 1 } };
         double[,] c = MatrixMultiplication(a, b);
+        Console.WriteLine(Determinant(a));
     }
 }
