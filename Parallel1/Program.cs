@@ -30,11 +30,10 @@ class Program
         }
         return subMatrix;
     }
-    static double Minor(double[,] a)
+    static double Minor(double[,] a, int row, int column)
     {
-
-        return 0;
-    } // ???
+        return Determinant(SubMatrix(a, row, column));
+    }
     static double[,]? MatrixMultiplication(double[,] a, double[,] b)
     {
         int n = a.GetLength(0);
@@ -90,7 +89,7 @@ class Program
             det += Math.Pow(-1, i) * a[0, i] * Determinant(SubMatrix(a, 0, i));
         }
         return det;
-    } // ???
+    }
     static double[,] InverseMatrix(double[,] a)
     {
         double[,] inversed = new double[a.GetLength(0), a.GetLength(1)];
@@ -103,9 +102,8 @@ class Program
 
     static void Main(string[] args)
     {
-        double[,] a = { { 1, -2, 5 }, { 3, -1, 0 }, { 2, 1, 3} };
+        double[,] a = { { 1, -2, 5 }, { 3, -1, 0 }};
         double[,] b = { { 5, 6 }, { 1, -4 }, { -2, 1 } };
         double[,] c = MatrixMultiplication(a, b);
-        Console.WriteLine(Determinant(a));
     }
 }
