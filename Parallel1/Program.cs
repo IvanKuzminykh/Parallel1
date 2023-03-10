@@ -34,6 +34,10 @@ class Program
     {
         return Determinant(SubMatrix(a, row, column));
     }
+    static double AlgebraicAddition(double[,] a, int row, int column)
+    {
+        return Math.Pow(-1, row + column) * Minor(a, row, column);
+    }
     static double[,]? MatrixMultiplication(double[,] a, double[,] b)
     {
         int n = a.GetLength(0);
