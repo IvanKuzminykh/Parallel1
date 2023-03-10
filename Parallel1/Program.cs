@@ -12,8 +12,27 @@ class Program
             Console.WriteLine();
         }
     }
+    static double[,] SubMatrix(double[,] matrix, int row, int column)
+    {
+        double[,] subMatrix = new double[matrix.GetLength(0) - 1, matrix.GetLength(1) - 1];
+        int currentRow = 0;
+        for(int i = 0; i < subMatrix.GetLength(0); ++i)
+        {
+            int currentColumn = 0;
+            if (i == row) continue;
+            for(int j = 0; j <  subMatrix.GetLength(1); ++j)
+            {
+                if(j == column) continue;
+                subMatrix[currentRow, currentColumn] = matrix[i,j];
+                currentColumn++;
+            }
+            currentRow++;
+        }
+        return subMatrix;
+    }
     static double Minor(double[,] a)
     {
+
         return 0;
     }
     static double[,]? MatrixMultiplication(double[,] a, double[,] b)
