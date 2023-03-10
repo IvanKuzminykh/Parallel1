@@ -12,9 +12,9 @@ class Program
             Console.WriteLine();
         }
     }
-    static double[,] Minor(double[,] a)
+    static double Minor(double[,] a)
     {
-        double[,] minor = new double[a.GetLength(0) - 1, a.GetLength(1) - 1];
+        return 0;
     }
     static double[,]? MatrixMultiplication(double[,] a, double[,] b)
     {
