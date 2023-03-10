@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Data.Common;
+using System.Threading;
 class Program
 {
     static void Print(double[,] a)
@@ -98,7 +99,13 @@ class Program
     {
         double[,] inversed = new double[a.GetLength(0), a.GetLength(1)];
         double[,] transposed = Transpose(a);
-
+        for(int i = 0; i < inversed.GetLength(0); ++i)
+        {
+            for(int j = 0; j <  inversed.GetLength(1); ++j)
+            {
+                inversed[i, j] = Math.Pow(-1, i + j) * Minor(a, i, j);
+            }
+        }
         return inversed;
     } // ???
 
