@@ -16,11 +16,11 @@ class Program
     {
         double[,] subMatrix = new double[matrix.GetLength(0) - 1, matrix.GetLength(1) - 1];
         int currentRow = 0;
-        for(int i = 0; i < subMatrix.GetLength(0); ++i)
+        for(int i = 0; i < matrix.GetLength(0); ++i)
         {
             int currentColumn = 0;
             if (i == row) continue;
-            for(int j = 0; j <  subMatrix.GetLength(1); ++j)
+            for(int j = 0; j <  matrix.GetLength(1); ++j)
             {
                 if(j == column) continue;
                 subMatrix[currentRow, currentColumn] = matrix[i,j];
@@ -101,6 +101,5 @@ class Program
         double[,] a = { { 1, -2, 5 }, { 3, -1, 0 } };
         double[,] b = { { 5, 6 }, { 1, -4 }, { -2, 1 } };
         double[,] c = MatrixMultiplication(a, b);
-        Print(c);
     }
 }
