@@ -34,7 +34,7 @@ class Program
     {
 
         return 0;
-    }
+    } // ???
     static double[,]? MatrixMultiplication(double[,] a, double[,] b)
     {
         int n = a.GetLength(0);
@@ -93,6 +93,9 @@ class Program
 
         return inversed;
     } // ???
+
+
+
     static void Main(string[] args)
     {
         double[,] a = { { 1, -2, 5 }, { 3, -1, 0 } };
