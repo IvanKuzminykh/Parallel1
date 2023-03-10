@@ -35,10 +35,6 @@ class Program
     {
         return Determinant(SubMatrix(a, row, column));
     }
-    static double AlgebraicAddition(double[,] a, int row, int column)
-    {
-        return Math.Pow(-1, row + column) * Minor(a, row, column);
-    }
     static double[,]? MatrixMultiplication(double[,] a, double[,] b)
     {
         int n = a.GetLength(0);
@@ -95,17 +91,20 @@ class Program
         }
         return det;
     }
-    static double[,] InverseMatrix(double[,] a)
+    static double[,]? InverseMatrix(double[,] a)
     {
+        if (a.GetLength(0) != a.GetLength(1)) return null;
+        double det = Determinant(a);
         double[,] inversed = new double[a.GetLength(0), a.GetLength(1)];
         double[,] transposed = Transpose(a);
         for(int i = 0; i < inversed.GetLength(0); ++i)
         {
             for(int j = 0; j <  inversed.GetLength(1); ++j)
             {
-                inversed[i, j] = Math.Pow(-1, i + j) * Minor(a, i, j);
+                inversed[i, j] = Math.Pow(-1, i + j) * Minor(transposed, i, j);
             }
         }
+        inversed = MatrixMultiplication(inversed, 1.0 / det);
         return inversed;
     } // ???
 
@@ -113,8 +112,10 @@ class Program
 
     static void Main(string[] args)
     {
-        double[,] a = { { 1, -2, 5 }, { 3, -1, 0 }};
+        double[,] a = { { 1, -2, 5 }, { 3, -1, 0 }, { 2, 1, 3} };
         double[,] b = { { 5, 6 }, { 1, -4 }, { -2, 1 } };
         double[,] c = MatrixMultiplication(a, b);
+        double[,] invA = InverseMatrix(a);
+        Print(MatrixMultiplication(a, invA));
     }
 }
