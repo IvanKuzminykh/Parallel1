@@ -98,14 +98,6 @@ class Program
         double[,] a = { { 1, -2, 5 }, { 3, -1, 0 } };
         double[,] b = { { 5, 6 }, { 1, -4 }, { -2, 1 } };
         double[,] c = MatrixMultiplication(a, b);
-        for(int i = 0; i < c.GetLength(0); ++i)
-        {
-            for(int j = 0; j < c.GetLength(1); ++j)
-            {
-                Console.Write(c[i, j] + "  ");
-            }
-            Console.WriteLine();
-        }
-        Print(Transpose(a));
+        Print(c);
     }
 }
